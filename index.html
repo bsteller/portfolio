@@ -8,9 +8,18 @@
 	<title>Portfolio</title>
 	<style>
 		*{box-sizing:border-box}
-		body{margin:0;padding:1em;font-family:"Segoe UI",arial,sans-serif;background-color:#fff;line-height:1.5}
-		h2{border-bottom:1px solid #737373}
-		h3{margin-top:0}
+		html,body{position:relative;height:100%;font-size:100%}
+		body{margin:0;padding:0;font-family:"Segoe UI",arial,sans-serif;background-color:#fff;line-height:1.5}
+		.grid{min-height:100%}
+		.aside{background-color:#486475;color:#fff;text-align:center;padding:.5em 0;position:fixed;min-height:92px;width:100%;top:0;left:0}
+		.aside h1{font-size:1.5rem;margin:0 0 .25rem}
+		.aside span{font-weight:400;border-left:1px solid #fff;padding-left:.5em;margin-left:.25em}
+		.nav{display:flex;flex-flow:row wrap;justify-content:center}
+		.nav a{color:#fff;text-decoration:none;padding:.25em .5em;margin:0 .25em .25em 0;border-radius:4px}
+		.nav a:visited,.nav a:hover{text-decoration:none;background-color:#4CB5F5;color:#fff}
+		.nav a.active,.nav a.active:visited,.nav a.active:hover{background-color:#3C8FC2;color:#fff;text-decoration:none;cursor:default}
+		.main{padding:0 1em;margin-top:112px}
+		h2{color:#486475;margin-top:0;padding-top:20px}
 		ul,ol{margin:0;padding:0;list-style-type:none}
 		ul li{display:flex;flex-direction:row}
 		ul li span:first-child{font-weight:700;margin-right:.5em}
@@ -19,363 +28,433 @@
 		figcaption{margin-bottom:.5rem;color:#737373;display:block}
 		figure,.image{text-align:center}
 		.section::after,.emails::after{display:block;clear:both;content:""}
-		.section{margin-bottom:2em}
-		.summary{padding:0 1em 0 0}
+		.section,.default{margin-bottom:2em}
 		.blogs img{max-width:275px}
-		.top {text-align:center;font-weight: normal;}
-		.top a {text-decoration: none;}
-		.intro {margin-bottom:2em;}
-		@media screen and (min-width:350px) {
-			.back{float: right;}
+		.top{text-align:center;font-weight:400}
+		.top a{text-decoration:none}
+		.intro{margin-bottom:2em}
+		@media screen and (max-width:400px) {
+		.aside h1{font-size:1rem}
+		.nav a{font-size:.75rem}
 		}
 		@media screen and (min-width:750px) {
-			.default{display:flex;flex-direction:row}
-			.summary{width:60%}
-			.image{width:40%;align-self:center}
-			.emails{display:flex;flex-direction:row;flex-wrap:wrap}
-			.emails figure{width:50%}
-			.blogs{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-around}
-			.blogs figure{width:auto}
-		}
-		@media screen and (min-width:990px) {
-			.summary,.image{width:50%}
-			.image{width:50%;align-self:flex-start}
+		h3{margin-top:0}
+		.default{display:flex;flex-direction:row-reverse}
+		.summary{width:60%;padding:0 0 0 2em}
+		.image{width:40%;align-self:flex-start}
+		.emails{display:flex;flex-direction:row;flex-wrap:wrap}
+		.emails figure{width:50%}
+		.blogs{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-around}
+		.blogs figure{width:auto}
 		}
 		@media screen and (min-width:1025px) {
-			.wrapper{width:990px;margin:0 auto;padding:0}
+		.main .wrapper{max-width:990px;margin:0 auto;padding:0}
+		}
+		@media screen and (min-width:1300px) {
+		.main{padding:0;margin-top:0}
+		.main .wrapper{margin:0;padding-left:2em}
+		.grid{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:stretch}
+		.main{flex-grow:2}
+		.aside{position:relative;text-align:left;padding:0;flex:0 0 18.75rem;min-height:auto}
+		.aside h1{font-size:1.5em;padding:1rem;margin:0}
+		.aside .wrapper{position:fixed;min-width:18.75rem}
+		.nav{display:block}
+		.nav a{display:block;padding:.5em 1em;margin:0;border-radius:0}
 		}
 	</style>
 </head>
 <body id="top">
-	<div class="wrapper">
-
-		<p class="back"><a href="https://github.com/bsteller">Go to GitHub</a></p>
-
-		<h1>Portfolio</h1>
-
-		<h2>Demos</h2>
-
-		<div class="section default">
-			<div class="col summary">
-				<h3>Mondrian using CSS grid</h3>
-	            <ul>
-	                <li><span>Tech:</span> <span>HTML/CSS</span></li>
-	                <li><span>Link:</span> <span><a href="https://bsteller.github.io/mondrian-css-grid/" target="_blank">Mondrian</a></span></li>
-	            </ul>
-				<p>Piet Mondrian, composition with Large Red Plane, Yellow, Black, Gray, and Blue, 1921. Implemented using CSS grid.</p>
+	<div class="grid">
+		<div class="aside">
+			<div class="wrapper">
+				<h1>Tony Powers <span>Portfolio</span></h1>
+				<div class="nav">
+					<a href="#demos" class="scroll">Demos</a>
+					<a href="#websites" class="scroll">Websites</a>
+					<a href="#eventbuilder" class="scroll">EventBuilder</a>
+					<a href="#landing" class="scroll">Landing Pages &amp; Emails</a>
+					<a href="#blogs" class="scroll">Brochure Sites & Blogs</a>
+				</div>
 			</div>
-			<div class="col image">
-				<img src="images/mondrian.gif" alt="CSS grid example">
-			</div>
-		</div>
+		</div><!-- end aside -->
+		<div class="main">
+			<div class="wrapper">
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Asteroids</h3>
-	            <ul>
-	                <li><span>Tech:</span> <span>HTML/CSS/JS</span></li>
-	                <li><span>Link:</span> <span><a href="https://bsteller.github.io/asteroids/" target="_blank">Asteroids</a></span></li>
-	            </ul>
-				<p>My introduction to HTML games without using a javascript game engine.</p>
-			</div>
-			<div class="col image">
-				<img src="images/asteroids.gif" alt="Asteroids game">
-			</div>
-		</div>
+				<h2 id="demos">Demos</h2>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Denny's Menu</h3>
-	            <ul>
-	                <li><span>Tech:</span> <span>HTML/CSS/JS, Knockout.js</span></li>
-	                <li><span>Link:</span> <span><a href="https://bsteller.github.io/dennys-knockout-demo/" target="_blank">Denny's</a></span></li>
-	            </ul>
-				<p>A single page app using the knockout.js framework.</p>
-			</div>
-			<div class="col image">
-				<img src="images/knockout-demo.jpg" alt="Knockout.js Demo">
-			</div>
-		</div>
+				<div class="default">
+					<div class="summary">
+						<h3>Mondrian using CSS grid</h3>
+			            <ul>
+			                <li><span>Tech:</span> <span>HTML/CSS</span></li>
+			                <li><span>Link:</span> <span><a href="https://bsteller.github.io/mondrian-css-grid/" target="_blank">Mondrian</a></span></li>
+			            </ul>
+						<p>Piet Mondrian, composition with Large Red Plane, Yellow, Black, Gray, and Blue, 1921. Implemented using CSS grid.</p>
+					</div>
+					<div class="image">
+						<img src="images/mondrian.gif" alt="CSS grid example">
+					</div>
+				</div>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Contact List</h3>
-	            <ul>
-	                <li><span>Tech:</span> <span>HTML/CSS/JS, Knockout.js</span></li>
-	                <li><span>Link:</span> <span><a href="https://bsteller.github.io/contacts-knockout-demo/" target="_blank">Contacts</a></span></li>
-	            </ul>
-				<p>Another demo of knockout.js. This was originally a prototype to test the Metro UI theme on Windows phones.</p>
-			</div>
-			<div class="col image">
-				<img src="images/contacts-demo.jpg" alt="Knockout.js and Metro UI">
-			</div>
-		</div>
+				<div class="default">
+					<div class="summary">
+						<h3>Asteroids</h3>
+			            <ul>
+			                <li><span>Tech:</span> <span>HTML/CSS/JS</span></li>
+			                <li><span>Link:</span> <span><a href="https://bsteller.github.io/asteroids/" target="_blank">Asteroids</a></span></li>
+			            </ul>
+						<p>My introduction to HTML games without using a javascript game engine.</p>
+					</div>
+					<div class="image">
+						<img src="images/asteroids.gif" alt="Asteroids game">
+					</div>
+				</div>
 
-		<h2>Websites</h2>
+				<div class="default">
+					<div class="summary">
+						<h3>Denny's Menu</h3>
+			            <ul>
+			                <li><span>Tech:</span> <span>HTML/CSS/JS, Knockout.js</span></li>
+			                <li><span>Link:</span> <span><a href="https://bsteller.github.io/dennys-knockout-demo/" target="_blank">Denny's</a></span></li>
+			            </ul>
+						<p>A single page app using the knockout.js framework.</p>
+					</div>
+					<div class="image">
+						<img src="images/knockout-demo.jpg" alt="Knockout.js Demo">
+					</div>
+				</div>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Mobtek Wholesale</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Webmaster, frontend, backend</span></li>
-	                <li><span>Tech:</span> <span>PHP, Big Commerce, HTML/CSS/JS</span></li>
-	                <li><span>Link:</span> <span><a href="http://mobtekwholesale.com/accessories/">mobtekwholesale.com</a></span></li>
-	            </ul>
-				<p>Built a Big Commerce theme using the Blueprint template engine. I also did a sister site using the Stencil template. Set up all aspects of Mobtek's ecommerce storefront, including third party plugins such as PayPal and Xero.</p>
-			</div>
-			<div class="col image">
-				<img src="images/mobtek.jpg" alt="Screenshot of Mobtek">
-			</div>
-		</div>
+				<div class="default">
+					<div class="summary">
+						<h3>Contact List</h3>
+			            <ul>
+			                <li><span>Tech:</span> <span>HTML/CSS/JS, Knockout.js</span></li>
+			                <li><span>Link:</span> <span><a href="https://bsteller.github.io/contacts-knockout-demo/" target="_blank">Contacts</a></span></li>
+			            </ul>
+						<p>Another demo of knockout.js. This was originally a prototype to test the Metro UI theme on Windows phones.</p>
+					</div>
+					<div class="image">
+						<img src="images/contacts-demo.jpg" alt="Knockout.js and Metro UI">
+					</div>
+				</div>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Mobtek (Intranet)</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Frontend, backend</span></li>
-	                <li><span>Tech:</span> <span>Java, Jooby, MySQL, HTML/CSS/JS, Python</span></li>
-	            </ul>
-				<p>Built an internal website for the sales department. The primary purpose was to view product costs and prices, and to generate custom PDF pricelists for the salesmen. I wrote a lot of python scripts to extract and clean sales data from various platforms before uploading it to this site.</p>
-			</div>
-			<div class="col image">
-				<img src="images/pricelist.jpg" alt="Screenshot of Pricelist">
-			</div>
-		</div>
+				<h2 id="websites">Websites</h2>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Interaction Metrics</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting, design</span></li>
-	                <li><span>Tech:</span> <span>PHP, Wordpress, HTML/CSS/JS</span></li>
-	                <li><span>Link:</span> <span><a href="http://www.interactionmetrics.com">interactionmetrics.com</a></span></li>
-	            </ul>
-				<p>I ported Interaction Metrics from classic ASP to a mobile-friendly Wordpress site. I designed and coded the site and set up hosting, as well as worked with the client on copywriting and SEO. Created custom plugins and functionality using PHP.</p>
-			</div>
-			<div class="col image">
-				<img src="images/im-mystery-page.jpg" alt="Screenshot of IM">
-			</div>
-		</div>
+				<div class="default">
+					<div class="summary">
+						<h3>Mobtek Wholesale</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Webmaster, frontend, backend</span></li>
+			                <li><span>Tech:</span> <span>PHP, Big Commerce, HTML/CSS/JS</span></li>
+			                <li><span>Link:</span> <span><a href="http://mobtekwholesale.com/accessories/">mobtekwholesale.com</a></span></li>
+			            </ul>
+						<p>Built a Big Commerce theme using the Blueprint template engine. I also did a sister site using the Stencil template. Set up all aspects of Mobtek's ecommerce storefront, including third party plugins such as PayPal and Xero.</p>
+					</div>
+					<div class="image">
+						<img src="images/mobtek.jpg" alt="Screenshot of Mobtek">
+					</div>
+				</div>
 
-		<div class="section default">
-			<div class="col summary">
-				<h3>Encounter Collaborative</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Webmaster</span></li>
-	                <li><span>Tech:</span> <span>ASP, HTML/CSS/JS</span></li>
-	            </ul>
-	            <p>Maintained the site and worked closely with marketing to create new content. I initiated a site redesign to increase conversions, focusing on marketing copy and SEO. Web leads increased from essentially zero to several a week.</p>
-			</div>
-			<div class="col image">
-				<img src="images/encounter1.jpg" alt="Screenshot of Encounter">
-			</div>
-		</div>
+				<div class="default">
+					<div class="summary">
+						<h3>Mobtek (Intranet)</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Frontend, backend</span></li>
+			                <li><span>Tech:</span> <span>Java, Jooby, MySQL, HTML/CSS/JS, Python</span></li>
+			            </ul>
+						<p>Built an internal website for the sales department. The primary purpose was to view product costs and prices, and to generate custom PDF pricelists for the salesmen. I wrote a lot of python scripts to extract and clean sales data from various platforms before uploading it to this site.</p>
+					</div>
+					<div class="image">
+						<img src="images/pricelist.jpg" alt="Screenshot of Pricelist">
+					</div>
+				</div>
 
-	    <div class="section default">
-	        <div class="col summary">
-	            <h3>Mojix</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Project lead, frontend, backend, UI, copy editing</span></li>
-	                <li><span>Tech:</span> <span>PHP, HTML/CSS/JS</span></li>
-	            </ul>
-	            <p>Based in Los Angeles, Mojix develops and manufactures RFID technology. I was brought in to finish a redesign started by another firm. I built the site, organized content, and implemented lead generation.</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/mojix.jpg" alt="Screenshot of Mojix">
-	        </div>
-	    </div>
+				<div class="default">
+					<div class="summary">
+						<h3>Interaction Metrics</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting, design</span></li>
+			                <li><span>Tech:</span> <span>PHP, Wordpress, HTML/CSS/JS</span></li>
+			                <li><span>Link:</span> <span><a href="http://www.interactionmetrics.com">interactionmetrics.com</a></span></li>
+			            </ul>
+						<p>I ported Interaction Metrics from classic ASP to a mobile-friendly Wordpress site. I designed and coded the site and set up hosting, as well as worked with the client on copywriting and SEO. Created custom plugins and functionality using PHP.</p>
+					</div>
+					<div class="image">
+						<img src="images/im-mystery-page.jpg" alt="Screenshot of IM">
+					</div>
+				</div>
 
-	    <h2>EventBuilder.com</h2>
-	    <p class="intro">EventBuilder was originally a portal that allowed companies to build, schedule and host online events using our custom audio and web conferencing tools. I worked as a full stack developer on a team of six. I also served as the link between sales/marketing and engineering, gathering business requirements and shepherding them into final products.</p>
+				<div class="default">
+					<div class="summary">
+						<h3>Encounter Collaborative</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Webmaster</span></li>
+			                <li><span>Tech:</span> <span>ASP, HTML/CSS/JS</span></li>
+			            </ul>
+			            <p>Maintained the site and worked closely with marketing to create new content. I initiated a site redesign to increase conversions, focusing on marketing copy and SEO. Web leads increased from essentially zero to several a week.</p>
+					</div>
+					<div class="image">
+						<img src="images/encounter1.jpg" alt="Screenshot of Encounter">
+					</div>
+				</div>
 
-	    <div class="section default">
-	        <div class="col summary">
-	            <h3>CSS Theme Architecture</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Frontend, design</span></li>
-	                <li><span>Tech:</span> <span>ASP, HTML/CSS/JS</span></li>
-	            </ul>
-	            <p>I developed the CSS template system for skinning the EventBuilder engine to look like our clients' websites. This was back before SASS et. al., so basically I pulled the primary colors and styles from the client's site and manually applied them to the base stylesheets of EventBuilder. It usually took me a day or so to get the basic look-n-feel of their site applied to our app.</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/triple.jpg" alt="Screenshot of Eventbuilder" style="border-width:0;">
-	        </div>
-	    </div>
+			    <div class="default">
+			        <div class="summary">
+			            <h3>Mojix</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Project lead, frontend, backend, UI, copy editing</span></li>
+			                <li><span>Tech:</span> <span>PHP, HTML/CSS/JS</span></li>
+			            </ul>
+			            <p>Based in Los Angeles, Mojix develops and manufactures RFID technology. I was brought in to finish a redesign started by another firm. I built the site, organized content, and implemented lead generation.</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/mojix.jpg" alt="Screenshot of Mojix">
+			        </div>
+			    </div>
 
-	    <div class="section default">
-	        <div class="col summary">
-	        	<h3>Lync Video Player</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
-	                <li><span>Tech:</span> <span>Node, Knockout, Bootstrap</span></li>
-	            </ul>
-	            <p>EventBuilder leveraged the Microsoft Lync API for large-scale meetings and events. I designed the UI for the EventBuilder Lync video player and worked with teammates to build interactive features such as chat, quizzes and polling.</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/view2.jpg" alt="Screenshot of Lync Video">
-	        </div>
-	    </div>
+			    <h2 id="eventbuilder">EventBuilder.com</h2>
 
-	    <div class="section default">
-	        <div class="col summary">
-	        	<h3>Lync Dashboard</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
-	                <li><span>Tech:</span> <span>Node, Knockout, Bootstrap, DX Charts</span></li>
-	            </ul>
-	            <p>Helped build the dashboard for Lync event moderators. It allowed moderators to view and control audience participation in real-time. We used DX Charts to show things such as quiz results, polls and registration stats.</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/mod.jpg" alt="Screenshot of Lync Dashboard">
-	        </div>
-	    </div>
+			    <p class="intro">EventBuilder was originally a portal that allowed companies to build, schedule and host online events using our custom audio and web conferencing tools. I worked as a full stack developer on a team of six. I also served as the link between sales/marketing and engineering, gathering business requirements and shepherding them into final products.</p>
 
-	    <div class="section default">
-	        <div class="col summary">
-	        	<h3>Registration Pages</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
-	                <li><span>Tech:</span> <span>Node, jQuery, Bootstrap, HTML/CSS/JS</span></li>
-	            </ul>
-	            <p>I designed and built EventBuilder's event registration pages. I took an older, multi-page process and simplified it to an SPA using jQuery and bootstrap.</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/event2.jpg" alt="Screenshot of Lync Registration Page">
-	        </div>
-	    </div>
+			    <div class="default">
+			        <div class="summary">
+			            <h3>CSS Theme Architecture</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Frontend, design</span></li>
+			                <li><span>Tech:</span> <span>ASP, HTML/CSS/JS</span></li>
+			            </ul>
+			            <p>I developed the CSS template system for skinning the EventBuilder engine to look like our clients' websites. This was back before SASS et. al., so basically I pulled the primary colors and styles from the client's site and manually applied them to the base stylesheets of EventBuilder. It usually took me a day or so to get the basic look-n-feel of their site applied to our app.</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/triple.jpg" alt="Screenshot of Eventbuilder" style="border-width:0;">
+			        </div>
+			    </div>
 
-	    <div class="section default">
-	        <div class="col summary">
-	        	<h3>Mobile</h3>
-	            <ul>
-	                <li><span>Role:</span> <span>Project lead, UI, frontend, backend</span></li>
-	                <li><span>Tech:</span> <span>Node, Cordova, Java, HTML/CSS/JS</span></li>
-	            </ul>
-	            <p>Before leaving Eventbuilder, I prototyped a hybrid app for our Lync product. This was basically a PWA before there was such a term. The goal was to re-use as much of our desktop code as possible. (The video in the screenshot is a placeholder: there were no Lync events featuring <i>Tears of Steel</i>, as far as I'm aware.)</p>
-	        </div>
-	        <div class="col image">
-	            <img src="images/sky-portrait-2.jpg" alt="Screenshot of Android App">
-	        </div>
-	    </div>
+			    <div class="default">
+			        <div class="summary">
+			        	<h3>Lync Video Player</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
+			                <li><span>Tech:</span> <span>Node, Knockout, Bootstrap</span></li>
+			            </ul>
+			            <p>EventBuilder leveraged the Microsoft Lync API for large-scale meetings and events. I designed the UI for the EventBuilder Lync video player and worked with teammates to build interactive features such as chat, quizzes and polling.</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/view2.jpg" alt="Screenshot of Lync Video">
+			        </div>
+			    </div>
 
-		<h2>Landing Pages &amp; Emails</h2>
+			    <div class="default">
+			        <div class="summary">
+			        	<h3>Lync Dashboard</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
+			                <li><span>Tech:</span> <span>Node, Knockout, Bootstrap, DX Charts</span></li>
+			            </ul>
+			            <p>Helped build the dashboard for Lync event moderators. It allowed moderators to view and control audience participation in real-time. We used DX Charts to show things such as quiz results, polls and registration stats.</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/mod.jpg" alt="Screenshot of Lync Dashboard">
+			        </div>
+			    </div>
 
-	    <div class="section landingpages">
-            <ul>
-                <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting</span></li>
-                <li><span>Tech:</span> <span>PHP, HTML/CSS/JS</span></li>
-            </ul>
-            <p class="intro">I've built dozens of landing and lead generation pages. Many ran in conjunction with Google Ad Words campaigns and featured split testing. Most of what's below was built from PSDs created by a graphic designer.</p>
-	        <div class="emails">
-	            <figure>
-	                <figcaption>L+ Event Conferencing</figcaption>
-	                <div><img src="images/xkc.jpg" alt="screenshot of company targeted landing page"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Encounter Audio Conferencing</figcaption>
-	                <div><img src="images/enhanced.jpg" alt="screenshot of audio upgrade landing page"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Envirolink Global</figcaption>
-	                <div><img src="images/envirolink.jpg" alt="screenshot of envirolink global"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Zox Camera</figcaption>
-	                <div><img src="images/zox.jpg" alt="screenshot of Zox camera"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>EventMax Audio Conferencing</figcaption>
-	                <div><img src="images/eventmax.jpg" alt="screenshot two of EventMax"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Screendonations.org (my design)</figcaption>
-	                <div><img src="images/etekdonate.jpg" alt="screenshot of screendonations.org."></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Labor Day Sale Email Blast (my design)</figcaption>
-	                <div><img src="images/eteklabor.jpg" alt="screenshot labor day sale email blast."></div>
-	            </figure>
-	            <figure>
-	                <figcaption>4th of July Sale Email Blast (my design)</figcaption>
-	                <div><img src="images/etek4th.jpg" alt="screenshot 4th of July email blast."></div>
-	            </figure>
-	        </div><!-- end emails -->
-	    </div><!-- end section -->
+			    <div class="default">
+			        <div class="summary">
+			        	<h3>Registration Pages</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Frontend, backend, UI</span></li>
+			                <li><span>Tech:</span> <span>Node, jQuery, Bootstrap, HTML/CSS/JS</span></li>
+			            </ul>
+			            <p>I designed and built EventBuilder's event registration pages. I took an older, multi-page process and simplified it to an SPA using jQuery and bootstrap.</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/event2.jpg" alt="Screenshot of Lync Registration Page">
+			        </div>
+			    </div>
 
-		<h2>Brochure Sites &amp; Blogs</h2>
+			    <div class="default">
+			        <div class="summary">
+			        	<h3>Mobile</h3>
+			            <ul>
+			                <li><span>Role:</span> <span>Project lead, UI, frontend, backend</span></li>
+			                <li><span>Tech:</span> <span>Node, Cordova, Java, HTML/CSS/JS</span></li>
+			            </ul>
+			            <p>Before leaving Eventbuilder, I prototyped a hybrid app for our Lync product. This was basically a PWA before there was such a term. The goal was to re-use as much of our desktop code as possible. (The video in the screenshot is a placeholder: there were no Lync events featuring <i>Tears of Steel</i>, as far as I'm aware.)</p>
+			        </div>
+			        <div class="image">
+			            <img src="images/sky-portrait-2.jpg" alt="Screenshot of Android App">
+			        </div>
+			    </div>
 
-	    <div class="section">
-	        <ul>
-	            <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting</span></li>
-	            <li><span>Tech:</span> <span>PHP, ASP, HTML/CSS/JS, Apache, MySQL, Wordpress</span></li>
-	        </ul>
-	        <p class="intro">Here's an assortment of brochure sites I've created over the years. Most of these were for clients who had never had a web presence. The projects usually entailed setting up everything from scratch: the domain, hosting, CPanel, coding, etc.</p>
-	        <div class="blogs">
-	            <figure>
-	                <figcaption>deborahrifkin.com</figcaption>
-	                <div><img src="images/deborahrifkin.jpg" alt="screenshot of deborahrifkin.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>Interaction Thinking</figcaption>
-	                <div><img src="images/imblog.jpg" alt="screenshot of interactionmetrics blog"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>markroncustomgunproducts.com</figcaption>
-	                <div><img src="images/markron.jpg" alt="screenshot of markroncustomgunproducts.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>onetoanother.org</figcaption>
-	                <div><img src="images/onetoanother.jpg" alt="screenshot of onetoanother.org"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>axisconstruct.com</figcaption>
-	                <div><img src="images/axis.jpg" alt="screenshot of axisconstruct.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>guidepointconsulting.com</figcaption>
-	                <div><img src="images/guidepoint.jpg" alt="screenshot of guidepointconsulting.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>graphicproducts.com</figcaption>
-	                <div><img src="images/graphicproducts.jpg" alt="screenshot of graphicproducts.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>discountlaminators.com</figcaption>
-	                <div><img src="images/discount-laminators.jpg" alt="screenshot of discountlaminators.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>pipemarkers.com</figcaption>
-	                <div><img src="images/pipemarkers.jpg" alt="screenshot of pipemarkers.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>rtklabels.com</figcaption>
-	                <div><img src="images/rtk-labels.jpg" alt="screenshot of rtklabels.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>labelequipment.com</figcaption>
-	                <div><img src="images/labelequipment.jpg" alt="screenshot of labelequipment.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>laminators.com</figcaption>
-	                <div><img src="images/laminators.jpg" alt="screenshot of laminators.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>pamelasachs.com</figcaption>
-	                <div><img src="images/wings.jpg" alt="screenshot of pamelasachs.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>cherrytreebirthing.com</figcaption>
-	                <div><img src="images/cherry.jpg" alt="screenshot of cherrytreebirthing.com"></div>
-	            </figure>
-	            <figure>
-	                <figcaption>jennifergiblin.com</figcaption>
-	                <div><img src="images/jengiblin.jpg" alt="screenshot of jennifergiblin.com"></div>
-	            </figure>
-	        </div><!-- end blogs -->
-	    </div><!-- end section -->
+				<h2 id="landing">Landing Pages &amp; Emails</h2>
 
-	    <h1 class="top"><a href="#top">Top</a></h1>
-	    <p style="text-align: center;"><a href="https://github.com/bsteller">Go to GitHub</a></p>
-	</div><!-- end wrapper -->
+			    <div class="section landingpages">
+		            <ul>
+		                <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting</span></li>
+		                <li><span>Tech:</span> <span>PHP, HTML/CSS/JS</span></li>
+		            </ul>
+		            <p class="intro">I've built dozens of landing and lead generation pages. Many ran in conjunction with Google Ad Words campaigns and featured split testing. Most of what's below was built from PSDs created by a graphic designer.</p>
+			        <div class="emails">
+			            <figure>
+			                <figcaption>L+ Event Conferencing</figcaption>
+			                <div><img src="images/xkc.jpg" alt="screenshot of company targeted landing page"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Encounter Audio Conferencing</figcaption>
+			                <div><img src="images/enhanced.jpg" alt="screenshot of audio upgrade landing page"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Envirolink Global</figcaption>
+			                <div><img src="images/envirolink.jpg" alt="screenshot of envirolink global"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Zox Camera</figcaption>
+			                <div><img src="images/zox.jpg" alt="screenshot of Zox camera"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>EventMax Audio Conferencing</figcaption>
+			                <div><img src="images/eventmax.jpg" alt="screenshot two of EventMax"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Screendonations.org (my design)</figcaption>
+			                <div><img src="images/etekdonate.jpg" alt="screenshot of screendonations.org."></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Labor Day Sale Email Blast (my design)</figcaption>
+			                <div><img src="images/eteklabor.jpg" alt="screenshot labor day sale email blast."></div>
+			            </figure>
+			            <figure>
+			                <figcaption>4th of July Sale Email Blast (my design)</figcaption>
+			                <div><img src="images/etek4th.jpg" alt="screenshot 4th of July email blast."></div>
+			            </figure>
+			        </div><!-- end emails -->
+			    </div><!-- end section -->
+
+				<h2 id="blogs">Brochure Sites &amp; Blogs</h2>
+
+			    <div class="section">
+			        <ul>
+			            <li><span>Role:</span> <span>Project lead, frontend, backend, copywriting</span></li>
+			            <li><span>Tech:</span> <span>PHP, ASP, HTML/CSS/JS, Apache, MySQL, Wordpress</span></li>
+			        </ul>
+			        <p class="intro">Here's an assortment of brochure sites I've created over the years. Most of these were for clients who had never had a web presence. The projects usually entailed setting up everything from scratch: the domain, hosting, CPanel, coding, etc.</p>
+			        <div class="blogs">
+			            <figure>
+			                <figcaption>deborahrifkin.com</figcaption>
+			                <div><img src="images/deborahrifkin.jpg" alt="screenshot of deborahrifkin.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>Interaction Thinking</figcaption>
+			                <div><img src="images/imblog.jpg" alt="screenshot of interactionmetrics blog"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>markroncustomgunproducts.com</figcaption>
+			                <div><img src="images/markron.jpg" alt="screenshot of markroncustomgunproducts.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>onetoanother.org</figcaption>
+			                <div><img src="images/onetoanother.jpg" alt="screenshot of onetoanother.org"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>axisconstruct.com</figcaption>
+			                <div><img src="images/axis.jpg" alt="screenshot of axisconstruct.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>guidepointconsulting.com</figcaption>
+			                <div><img src="images/guidepoint.jpg" alt="screenshot of guidepointconsulting.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>graphicproducts.com</figcaption>
+			                <div><img src="images/graphicproducts.jpg" alt="screenshot of graphicproducts.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>discountlaminators.com</figcaption>
+			                <div><img src="images/discount-laminators.jpg" alt="screenshot of discountlaminators.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>pipemarkers.com</figcaption>
+			                <div><img src="images/pipemarkers.jpg" alt="screenshot of pipemarkers.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>rtklabels.com</figcaption>
+			                <div><img src="images/rtk-labels.jpg" alt="screenshot of rtklabels.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>labelequipment.com</figcaption>
+			                <div><img src="images/labelequipment.jpg" alt="screenshot of labelequipment.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>laminators.com</figcaption>
+			                <div><img src="images/laminators.jpg" alt="screenshot of laminators.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>pamelasachs.com</figcaption>
+			                <div><img src="images/wings.jpg" alt="screenshot of pamelasachs.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>cherrytreebirthing.com</figcaption>
+			                <div><img src="images/cherry.jpg" alt="screenshot of cherrytreebirthing.com"></div>
+			            </figure>
+			            <figure>
+			                <figcaption>jennifergiblin.com</figcaption>
+			                <div><img src="images/jengiblin.jpg" alt="screenshot of jennifergiblin.com"></div>
+			            </figure>
+			        </div><!-- end blogs -->
+			    </div><!-- end section -->
+			    <h1 class="top"><a href="#top" id="toplink">Top</a></h1>
+			    <p style="text-align: center;"><a href="https://github.com/bsteller">Go to GitHub</a></p>
+			</div><!-- end wrapper -->
+		</div><!-- end main -->
+	</div><!-- end grid -->
+
+	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		let links = $('.scroll');
+
+		function init() {
+			$('.nav a').first().addClass('active');
+		}
+
+		function removeActiveClass() {
+			$.each(links, function(i, el) {
+				$(el).removeClass('active');
+			});
+		}
+
+		function scrollPage(el) {
+			var scrollPos = $(el.attr('href')).offset().top;
+
+			if (window.innerWidth <= 1299) {
+				scrollPos -= $('.aside').height();
+			}
+
+			$("body,html").animate({scrollTop: scrollPos}, 800);
+		}
+
+		$('.scroll').on('click', function(e) {
+
+			e.preventDefault();
+
+			const el = $(e.currentTarget);
+
+			if (el.hasClass('active')) {return false;}
+
+			removeActiveClass();
+
+			el.addClass('active');
+
+			scrollPage(el);
+		});
+
+		$('#toplink').on('click', function(e) {
+			removeActiveClass();
+			init();
+			scrollPage($('#top'));
+		});
+
+
+		// Set the active link
+		init();
+	</script>
 </body>
 </html>
